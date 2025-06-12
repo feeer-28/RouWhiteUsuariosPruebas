@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #fefefe;
+  color: #333;
+}
+
+header {
+  background-color: #f97316;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+nav a {
+  margin: 0 1rem;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.illustration img {
+  width: 400px;
+  border-radius: 50%;
+}
+
+.turismo {
+  max-width: 500px;
+}
+
+.turismo h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+}
+
+.turismo p {
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  font-size: 30px;
+  color: #000;
+}
+
+footer {
+  background-color: #f97316;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.contenido-turismo {
+  margin-left: 2rem;
+}
+
+.contenido-turismo h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.boton-con-imagen button {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Catedral-Bas%C3%ADlica-de-Nuestra-Se%C3%B1ora-de-la-Asunci%C3%B3n-de-Popay%C3%A1n-Colombia-1.jpg/500px-Catedral-Bas%C3%ADlica-de-Nuestra-Se%C3%B1ora-de-la-Asunci%C3%B3n-de-Popay%C3%A1n-Colombia-1.jpg'); /* Cambia esta ruta */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 220px;
+  height: 80px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.descripcion {
+  max-width: 600px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.boton-con-imagen button:hover {
+  opacity: 0.8;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 0.5rem; /* espacio entre los botones */
+  margin-left: auto;
+  margin-right: 1rem;
+  align-items: center;
+}
+
+.auth-buttons button {
+  background-color: white;
+  color: #ff6600;
+  border: 2px solid #ff6600;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-buttons button:hover {
+  background-color: #ff6600;
+  color: white;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}

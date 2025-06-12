@@ -1,0 +1,78 @@
+/* src/assets/rutas.css */
+.rutas-container {
+  padding: 2rem 4vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titulo-principal {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  font-weight: bold;
+  color: #f97316;
+  letter-spacing: 1px;
+}
+
+.contenedor-lista {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.empresa {
+  width: 100%;
+}
+
+.nombre-empresa {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.lista-rutas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-left: 1rem;
+}
+
+.ruta-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(63,81,181,0.07), 0 1.5px 6px rgba(0,0,0,0.05);
+  width: fit-content;
+  transition: box-shadow 0.3s, background 0.3s;
+  border-left: 5px solid #f97316;
+  cursor: pointer;
+}
+
+.ruta-card:hover {
+  background: #f3f6fd;
+  box-shadow: 0 4px 16px rgba(63,81,181,0.13);
+}
+
+.icono-bus {
+  margin-right: 0.7rem;
+  color: #3f51b5;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .rutas-container {
+    padding: 1rem 2vw;
+  }
+  .ruta-card {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.7rem;
+  }
+  .nombre-empresa {
+    font-size: 1.1rem;
+  }
+}

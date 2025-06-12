@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo i {
+  font-size: 30px;
+  color: #000;
+}
+
+.rutas {
+  padding: 2rem;
+}
+
+.rutas h2 {
+  font-size: 2rem;
+  color: #ff6600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ruta-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  transition: transform 0.2s;
+}
+
+.ruta-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.ruta-item i {
+  font-size: 1.5rem;
+  color: #ff6600;
+}
+.ruta-item span {
+  flex-grow: 1;
+}
+
+header {
+  background-color: #f97316;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+nav a {
+  margin: 0 1rem;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-buttons button {
+  background-color: white;
+  color: #ff6600;
+  border: 2px solid #ff6600;
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-buttons button:hover {
+  background-color: #ff6600;
+  color: white;
+}
+.auth-buttons {
+  display: flex;
+  gap: 0.5rem; /* espacio entre los botones */
+  margin-left: auto;
+  margin-right: 1rem;
+  align-items: center;
+}
+.auth-buttons button i {
+  margin-right: 0.5rem; /* espacio entre el icono y el texto */
+}
+.auth-buttons button:last-child {
+  margin-right: 0; /* elimina el margen derecho del último botón */
+}
+footer {
+  background-color: #f97316;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

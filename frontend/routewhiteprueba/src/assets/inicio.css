@@ -1,0 +1,144 @@
+/* Reset & Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #fefefe;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #f97316;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+nav a {
+  margin: 0 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #222;
+}
+
+/* Main Layout */
+.inicio-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ilustración */
+.illustration {
+  display: flex;
+  justify-content: flex-end;
+  flex: 2 1 500px; /* Aumenta el flex-grow para que ocupe más espacio */
+}
+
+.illustration img {
+  width: 100%;
+  max-width: 500px;      /* Más grande que antes */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  margin-left: -60px;    /* Negativo para moverla a la izquierda */
+}
+
+/* Turismo */
+.turismo {
+  max-width: 700px;      /* Más ancho */
+  min-width: 350px;      /* Ancho mínimo */
+  flex: 2 1 500px;       /* Ocupa más espacio en el flex */
+  margin-left: 40px;     /* Separa de la ilustración */
+  align-self: flex-start;/* Alinea arriba si hay espacio */
+}
+
+.contenido-turismo {
+  padding: 0 2rem;       /* Más espacio a los lados */
+  text-align: left;      /* Alinea el texto a la izquierda */
+}
+
+.contenido-turismo h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #f97316;
+}
+
+.boton-con-imagen button {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Catedral-Bas%C3%ADlica-de-Nuestra-Se%C3%B1ora-de-la-Asunci%C3%B3n-de-Popay%C3%A1n-Colombia-1.jpg/500px-Catedral-Bas%C3%ADlica-de-Nuestra-Se%C3%B1ora-de-la-Asunci%C3%B3n-de-Popay%C3%A1n-Colombia-1.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 100%;
+  max-width: 220px;
+  height: 80px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.boton-con-imagen button:hover {
+  opacity: 0.85;
+}
+
+.descripcion {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  text-align: left;      /* Asegura alineación izquierda */
+}
+
+/* Footer */
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .inicio-container {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 1rem;
+  }
+
+  .contenido-turismo {
+    padding: 0;
+    text-align: center;
+  }
+
+  .boton-con-imagen button {
+    max-width: 100%;
+  }
+}
