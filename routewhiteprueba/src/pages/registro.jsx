@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Añadido useNavigate
 import '../assets/registro.css';
 
 const Registro = () => {
@@ -9,36 +9,57 @@ const Registro = () => {
     contrasena: '', 
     confirmarContrasena: '' 
   });
+  
+  const [error, setError] = useState(''); // Estado para manejar errores
+  const navigate = useNavigate(); // Para redireccionar
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUsuario(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { // Convertido en async
     e.preventDefault();
+    
     // Validar que las contraseñas coincidan
     if (usuario.contrasena !== usuario.confirmarContrasena) {
-      alert('Las contraseñas no coinciden');
+      setError('Las contraseñas no coinciden');
       return;
     }
     
-    // Preparar datos para enviar a la base de datos
+    // Preparar datos para enviar
     const datosUsuario = {
       nombre: usuario.nombre,
       email: usuario.email,
-      contrasena: usuario.contrasena // Usar contrasena en lugar de password
+      contrasena: usuario.contrasena
     };
     
-    console.log('Usuario a registrar:', datosUsuario);
-    alert('Registro exitoso!');
-    
-    // Aquí iría la conexión con la API/backend
-    // fetch('/api/registro', {
-    //   method: 'POST',
-    //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify(datosUsuario)
-    // })
+    try {
+      console.log('Usuario a registrar:', datosUsuario);
+      
+      // Enviar datos al backend
+      const response = await fetch('http://localhost:3000/api/usuarios', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(datosUsuario)
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        // Manejar errores del servidor
+        setError(data.message || 'Error en el registro');
+        return;
+      }
+      
+      // Registro exitoso
+      alert('Registro exitoso!');
+      navigate('/login'); // Redirigir al login
+      
+    } catch (err) {
+      console.error('Error en el registro:', err);
+      setError('Error de conexión con el servidor');
+    }
   };
 
   return (
@@ -63,6 +84,8 @@ const Registro = () => {
       <div className="form-container">
         <div className="form-content">
           <h2>Crear Cuenta</h2>
+          
+          {error && <div className="error-message">{error}</div>}
           
           <form onSubmit={handleSubmit}>
             <div className="input-group">
@@ -93,7 +116,7 @@ const Registro = () => {
               <label>Contraseña</label>
               <input 
                 type="password" 
-                name="contrasena" // Cambiado a contrasena
+                name="contrasena"
                 placeholder="Crea una contraseña" 
                 required 
                 onChange={handleChange}
@@ -105,7 +128,7 @@ const Registro = () => {
               <label>Confirmar contraseña</label>
               <input 
                 type="password" 
-                name="confirmarContrasena" // Cambiado a confirmarContrasena
+                name="confirmarContrasena"
                 placeholder="Confirma tu contraseña" 
                 required 
                 onChange={handleChange}
