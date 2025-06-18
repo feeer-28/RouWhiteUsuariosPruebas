@@ -1,16 +1,19 @@
-// src/pages/Rutas.jsx
 import { useEffect, useState } from 'react';
 import '../assets/rutas.css';
 import { FaBus } from 'react-icons/fa';
-import Header from '../components/Header'; // Asegúrate de tener esto bien importado
+import Header from '../components/Header';
 import Footer from '../components/footer';
+
 function Rutas() {
   const [empresas, setEmpresas] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/rutas')
+    fetch('http://localhost:3000/api/rutas/listar')
       .then(res => res.json())
-      .then(data => setEmpresas(data))
+      .then(data => {
+        console.log('DATA:', data); // Verifica la estructura aquí
+        setEmpresas(data);
+      })
       .catch(err => console.error('Error cargando rutas:', err));
   }, []);
 
@@ -19,21 +22,24 @@ function Rutas() {
       <Header />
       <main className="rutas-container">
         <h2 className="titulo-principal">Buses disponibles</h2>
-        <div className="contenedor-lista">
-          {empresas.map((empresa, index) => (
-            <section key={index} className="empresa">
+        {empresas.length === 0 ? (
+          <p>No hay rutas disponibles.</p>
+        ) : (
+          empresas.map((empresa, index) => (
+            <section key={index}>
               <h3 className="nombre-empresa">{empresa.nombre}</h3>
               <div className="lista-rutas">
-                {empresa.Ruta.map((ruta, i) => (
+                {empresa.Ruta && empresa.Ruta.map((ruta, i) => (
                   <div className="ruta-card" key={i}>
                     <FaBus className="icono-bus" />
                     <span>{ruta.nombre}</span>
                   </div>
                 ))}
+
               </div>
             </section>
-          ))}
-        </div>
+          ))
+        )}
       </main>
       <Footer />
     </>
