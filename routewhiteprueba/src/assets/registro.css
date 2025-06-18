@@ -1,0 +1,142 @@
+/* Estilos generales - más amplios */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f5f8fa;
+}
+
+.registro-container {
+  display: flex;
+  height: 80vh;
+  min-height: 500px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10vh auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 1300px; /* Más ancho */
+  width: 95%; /* Más ancho */
+}
+
+/* Panel izquierdo - Bienvenida ampliada */
+.welcome-container {
+  width: 45%;
+  background: linear-gradient(135deg, #f97316 0%, #ff9950 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px; /* Más espacio horizontal */
+}
+
+.welcome-content {
+  max-width: 480px; /* Más ancho */
+  text-align: center;
+  padding: 40px; /* Más espacio interno */
+}
+
+.welcome-content h1 {
+  font-size: 2.2rem; /* Un poco más grande */
+  margin-bottom: 1.8rem;
+}
+
+.welcome-content p {
+  font-size: 1.1rem; /* Un poco más grande */
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.signin-button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: rgb(255, 255, 255);
+  padding: 12px 40px; /* Más ancho */
+  border-radius: 25px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Panel derecho - Formulario ampliado */
+.form-container {
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px 0; /* Espacio vertical */
+}
+
+.form-box {
+  width: 460px; /* Más ancho */
+  padding: 40px 45px; /* Más espacio interno */
+  background: #ffffff;
+}
+
+.form-box h2 {
+  color: #333;
+  font-size: 1.9rem; /* Más grande */
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 1.2rem; /* Más espacio entre campos */
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px; /* Más alto */
+  border: 1px solid #e1e8ed;
+  border-radius: 10px; /* Más redondeado */
+  font-size: 1rem; /* Más grande */
+  box-sizing: border-box;
+  transition: all 0.2s;
+}
+
+.register-button {
+  width: 100%;
+  padding: 14px; /* Más alto */
+  background: linear-gradient(135deg, #f97316 0%, #f78e42  100%);
+  color: white;
+  border: none;
+  border-radius: 10px; /* Más redondeado */
+  font-size: 1.05rem; /* Más grande */
+  margin-top: 15px; /* Más espacio */
+}
+
+.login-link {
+  margin-top: 20px; /* Más espacio */
+  font-size: 0.95rem; /* Más grande */
+}
+
+.login-link a {
+  font-size: 1rem; /* Más grande */
+}
+
+/* Responsive para móviles */
+@media (max-width: 992px) {
+  .registro-container {
+    flex-direction: column;
+    height: auto;
+    margin: 20px auto;
+    width: 90%;
+  }
+  
+  .welcome-container, .form-container {
+    width: 100%;
+    padding: 30px 20px;
+  }
+  
+  .welcome-container {
+    padding: 50px 25px;
+  }
+  
+  .form-box {
+    width: 100%;
+    max-width: 500px;
+    padding: 35px;
+  }
+}
