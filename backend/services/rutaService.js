@@ -1,24 +1,27 @@
 const { Ruta, Empresa } = require('../models');
 
 const RutaService = {
+
   async obtenerRutasActivas() {
     try {
-      const rutas = await Ruta.findAll({
-        where: { vigente: true },
+      const empresas = await Empresa.findAll({
+        attributes: ['id', 'nombre'],
         include: [
           {
-            model: Empresa,
-            attributes: ['nombre', 'direccion', 'telefono'],
+            model: Ruta,
+            attributes: ['id', 'nombre'],
+            where: { vigente: true },
+            required: true,
           },
         ],
-        attributes: ['id', 'nombre', 'descripcion', 'hora_inicio', 'hora_fin']
       });
 
-      return rutas;
+      return empresas;
     } catch (error) {
-      throw new Error('Error al obtener las rutas: ' + error.message);
+      throw new Error('Error al obtener las rutas agrupadas por empresa: ' + error.message);
     }
   },
+
 
   async getRutaById(id) {
     try {
