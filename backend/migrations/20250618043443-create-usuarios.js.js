@@ -17,6 +17,14 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      telefono: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        validate: {
+          is: /^[0-9]+$/i, // Validación solo números
+          is: /^\d{10}$/ // Validación de 10 números
+        }
+      },
       contraseña: {
         type: Sequelize.STRING,
         allowNull: false
