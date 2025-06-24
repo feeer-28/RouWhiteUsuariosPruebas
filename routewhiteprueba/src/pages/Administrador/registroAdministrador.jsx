@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../assets/login.css'; // ✅ Usamos estilos del login
+import { Link } from 'react-router-dom';
+import "../../assets/login.css";
+ // ✅ Usamos el estilo global encapsulado
 
-const Registro = () => {
-  const navigate = useNavigate();
-  const [mensaje, setMensaje] = useState('');
-
-  const [usuario, setUsuario] = useState({
+const Registro = ({ rol }) => {
+  const [formulario, setFormulario] = useState({
     nombre: '',
     telefono: '',
     email: '',
@@ -15,37 +13,31 @@ const Registro = () => {
     confirmarContrasena: ''
   });
 
+  const [mensaje, setMensaje] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUsuario((prev) => ({ ...prev, [name]: value }));
+    setFormulario((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (usuario.contrasena !== usuario.confirmarContrasena) {
+    if (formulario.contrasena !== formulario.confirmarContrasena) {
       setMensaje('Las contraseñas no coinciden');
       return;
     }
 
-    const datosUsuario = {
-      nombre: usuario.nombre,
-      telefono: usuario.telefono,
-      email: usuario.email,
-      contraseña: usuario.contrasena
-    };
-
     try {
-      const response = await axios.post('http://localhost:3000/api/usuarios/register', datosUsuario);
+      const response = await axios.post(`http://localhost:3000/api/${rol}`, formulario);
       setMensaje(response.data.mensaje || 'Registro exitoso');
-      setUsuario({
+      setFormulario({
         nombre: '',
         telefono: '',
         email: '',
         contrasena: '',
         confirmarContrasena: ''
       });
-      navigate('/login');
     } catch (error) {
       setMensaje(error.response?.data?.mensaje || 'Error al registrar');
     }
@@ -54,9 +46,9 @@ const Registro = () => {
   return (
     <div className="login-wrapper">
       <div className="container">
-        {/* ✅ Registro primero (izquierda) */}
+        {/* ✅ Formulario primero */}
         <div className="right-panel">
-          <h2>Registro de Usuario</h2>
+          <h2>Registro de Administrador</h2>
           {mensaje && <p style={{ color: 'red', marginBottom: '10px' }}>{mensaje}</p>}
           <form onSubmit={handleSubmit}>
             <div className="input-group">
@@ -65,7 +57,7 @@ const Registro = () => {
                 name="nombre"
                 placeholder="Nombre completo"
                 required
-                value={usuario.nombre}
+                value={formulario.nombre}
                 onChange={handleChange}
               />
             </div>
@@ -76,7 +68,7 @@ const Registro = () => {
                 name="telefono"
                 placeholder="Teléfono"
                 required
-                value={usuario.telefono}
+                value={formulario.telefono}
                 onChange={handleChange}
               />
             </div>
@@ -87,7 +79,7 @@ const Registro = () => {
                 name="email"
                 placeholder="Correo electrónico"
                 required
-                value={usuario.email}
+                value={formulario.email}
                 onChange={handleChange}
               />
             </div>
@@ -98,7 +90,7 @@ const Registro = () => {
                 name="contrasena"
                 placeholder="Contraseña"
                 required
-                value={usuario.contrasena}
+                value={formulario.contrasena}
                 onChange={handleChange}
               />
             </div>
@@ -109,7 +101,7 @@ const Registro = () => {
                 name="confirmarContrasena"
                 placeholder="Confirmar contraseña"
                 required
-                value={usuario.confirmarContrasena}
+                value={formulario.confirmarContrasena}
                 onChange={handleChange}
               />
             </div>
@@ -118,12 +110,12 @@ const Registro = () => {
           </form>
         </div>
 
-        {/* ✅ Panel de bienvenida ahora a la derecha */}
+        {/* ✅ Panel institucional a la derecha */}
         <div className="left-panel">
-          <h1>¡Únete a nosotros!</h1>
-          <p>Regístrate para disfrutar de todos nuestros beneficios.</p>
+          <h1>Administrador</h1>
+          <p>Registra un nuevo administrador para gestionar el sistema de rutas.</p>
           <div className="button-container">
-            <Link to="/login" className="small-button">Login</Link>
+            <Link to="/login-administrador" className="small-button">Login Admin</Link>
           </div>
         </div>
       </div>
