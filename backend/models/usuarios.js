@@ -57,8 +57,4 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   return Usuario;
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> origin/fernanda
