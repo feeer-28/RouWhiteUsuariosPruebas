@@ -8,8 +8,4 @@ router.get('/:id', RutaController.buscarRutaPorId);
 router.post('/favoritos', RutaController.agregarRutaAFavoritos);
 router.delete('/favoritos', authMiddleware, RutaController.eliminarRutaFavoritos);
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> origin/fernanda
