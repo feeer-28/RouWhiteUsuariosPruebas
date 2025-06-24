@@ -8,7 +8,7 @@ router.get('/', usuarioController.listarUsuarios);
 router.get('/:id', authMiddleware,usuarioController.obtenerUsuarioPorId);
 router.put('/:id', authMiddleware,usuarioController.actualizarUsuario);
 router.delete('/:id', authMiddleware,usuarioController.eliminarUsuario);
-router.post('/login', usuarioController.login);
+
 
 
 module.exports = router;
