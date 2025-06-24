@@ -11,8 +11,4 @@ router.delete('/:id', authMiddleware,usuarioController.eliminarUsuario);
 router.post('/login', usuarioController.login);
 
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> origin/fernanda
