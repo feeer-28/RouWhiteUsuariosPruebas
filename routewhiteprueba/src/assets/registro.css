@@ -1,142 +1,128 @@
-/* Estilos generales - más amplios */
-body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #f5f8fa;
-}
-
 .registro-container {
   display: flex;
-  height: 80vh;
-  min-height: 500px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 10vh auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  max-width: 1300px; /* Más ancho */
-  width: 95%; /* Más ancho */
+  height: 100vh;
 }
 
-/* Panel izquierdo - Bienvenida ampliada */
-.welcome-container {
-  width: 45%;
-  background: linear-gradient(135deg, #f97316 0%, #ff9950 100%);
+.left-panel {
+  flex: 1;
+  background: linear-gradient(to bottom right, #F3C623, #FA812F);
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 40px; /* Más espacio horizontal */
-}
-
-.welcome-content {
-  max-width: 480px; /* Más ancho */
+  padding: 2rem;
   text-align: center;
-  padding: 40px; /* Más espacio interno */
 }
 
-.welcome-content h1 {
-  font-size: 2.2rem; /* Un poco más grande */
-  margin-bottom: 1.8rem;
+.left-panel h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.welcome-content p {
-  font-size: 1.1rem; /* Un poco más grande */
-  line-height: 1.6;
-  margin-bottom: 2.5rem;
+.left-panel p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.signin-button {
-  background-color: transparent;
+.button-container {
+  margin-top: 1rem;
+}
+
+.small-button {
+  padding: 0.6rem 1.5rem;
+  background: none;
   border: 2px solid white;
-  color: rgb(255, 255, 255);
-  padding: 12px 40px; /* Más ancho */
-  border-radius: 25px;
-  font-size: 1.05rem;
-  font-weight: 600;
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Panel derecho - Formulario ampliado */
-.form-container {
-  width: 55%;
+.small-button:hover {
+  background: white;
+  color: #FA812F;
+}
+
+.right-panel {
+  flex: 1;
+  background: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
-  padding: 20px 0; /* Espacio vertical */
+  padding: 2rem;
 }
 
-.form-box {
-  width: 460px; /* Más ancho */
-  padding: 40px 45px; /* Más espacio interno */
-  background: #ffffff;
+.right-panel h2 {
+  font-size: 2rem;
+  color: #FA812F;
+  margin-bottom: 1.5rem;
 }
 
-.form-box h2 {
-  color: #333;
-  font-size: 1.9rem; /* Más grande */
-  margin-bottom: 1.8rem;
-  text-align: center;
+form {
+  width: 100%;
+  max-width: 400px;
 }
 
 .input-group {
-  margin-bottom: 1.2rem; /* Más espacio entre campos */
+  margin-bottom: 1rem;
 }
 
 .input-group input {
   width: 100%;
-  padding: 14px; /* Más alto */
-  border: 1px solid #e1e8ed;
-  border-radius: 10px; /* Más redondeado */
-  font-size: 1rem; /* Más grande */
-  box-sizing: border-box;
-  transition: all 0.2s;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #F3C623;
+  background-color: #eef6ff;
 }
 
 .register-button {
   width: 100%;
-  padding: 14px; /* Más alto */
-  background: linear-gradient(135deg, #f97316 0%, #f78e42  100%);
-  color: white;
+  padding: 0.75rem;
   border: none;
-  border-radius: 10px; /* Más redondeado */
-  font-size: 1.05rem; /* Más grande */
-  margin-top: 15px; /* Más espacio */
+  border-radius: 12px;
+  background: linear-gradient(to right, #F3C623, #FA812F);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
-.login-link {
-  margin-top: 20px; /* Más espacio */
-  font-size: 0.95rem; /* Más grande */
+.register-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-.login-link a {
-  font-size: 1rem; /* Más grande */
-}
-
-/* Responsive para móviles */
-@media (max-width: 992px) {
+@media (max-width: 900px) {
   .registro-container {
     flex-direction: column;
-    height: auto;
-    margin: 20px auto;
-    width: 90%;
   }
-  
-  .welcome-container, .form-container {
+
+  .left-panel, .right-panel {
+    flex: none;
     width: 100%;
-    padding: 30px 20px;
   }
-  
-  .welcome-container {
-    padding: 50px 25px;
+
+  .left-panel {
+    padding: 1.5rem;
   }
-  
-  .form-box {
-    width: 100%;
-    max-width: 500px;
-    padding: 35px;
+
+  .right-panel {
+    padding: 1.5rem 1rem;
+  }
+
+  form {
+    max-width: 100%;
   }
 }
