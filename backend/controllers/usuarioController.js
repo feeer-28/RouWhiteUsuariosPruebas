@@ -81,4 +81,8 @@ class UsuarioController {
   }
 }
 
+<<<<<<< HEAD
 module.exports = new UsuarioController();
+=======
+module.exports = new UsuarioController();
+>>>>>>> origin/fernanda

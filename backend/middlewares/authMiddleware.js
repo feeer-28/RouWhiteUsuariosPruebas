@@ -16,4 +16,8 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
+<<<<<<< HEAD
 module.exports = authMiddleware;
+=======
+module.exports = authMiddleware;
+>>>>>>> origin/fernanda

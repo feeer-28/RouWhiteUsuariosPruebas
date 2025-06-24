@@ -62,4 +62,8 @@ class UsuarioService {
   }
 }
 
+<<<<<<< HEAD
 module.exports = new UsuarioService();
+=======
+module.exports = new UsuarioService();
+>>>>>>> origin/fernanda
