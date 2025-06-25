@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #e16c13;
+    background: linear-gradient(135deg, #e07305 0%, #261d1d 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+    font-size: 20px;
+    /* Aumenta el tamaño base de fuente */
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 64px;
+    /* Más espacio */
+    background: transparent;
+    color: rgb(222, 25, 25);
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
+    /* Más grande */
+    color: #000000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    /* Más separación */
+}
+
+nav ul li a {
+    color: rgb(242, 234, 234);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    /* Más grande */
+    transition: color .3s ease;
+}
+
+nav ul li a:hover {
+    color: #000000;
+}
+
+.login-btn {
+    background: white;
+    color: #0072ff;
+    border: none;
+    padding: 12px 32px;
+    /* Más grande */
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background .3s ease, color .3s ease;
+}
+
+.login-btn:hover {
+    background: #000000;
+    color: white;
+}
+
+/* Main layout */
+main {
+    flex: 1;
+    display: flex;
+    max-width: 1500px;
+    /* Más ancho */
+    min-height: 700px;
+    /* Más alto */
+    margin: 60px auto;
+    background: white;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Left content */
+.content {
+    flex: 1;
+    padding: 100px 100px 100px 120px;
+    /* Más espacio */
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content h1 {
+    font-size: 4rem;
+    /* Más grande */
+    color: #00bfff;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    font-weight: 900;
+}
+
+.content p {
+    font-size: 1.3rem;
+    /* Más grande */
+    color: #666;
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+}
+
+.demo-btn {
+    background: #fd7c0a;
+    border: none;
+    color: rgb(226, 214, 214);
+    font-weight: 700;
+    padding: 18px 56px;
+    /* Más grande */
+    border-radius: 36px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(220, 108, 16, 0.2);
+    transition: background .3s ease;
+}
+
+.demo-btn:hover {
+    background: #f47e08;
+}
+
+/* Pagination dots */
+.pagination {
+    margin-top: 48px;
+    display: flex;
+    gap: 20px;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    background: #000000;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .3s ease;
+}
+
+.dot.active {
+    background: #e98827;
+}
+
+/* Right image area */
+.image-area {
+    flex: 1;
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 60%);
+    min-width: 400px;
+    /* Asegura que la imagen tenga espacio */
+}
+
+/* Decorative leaves shapes using CSS */
+.image-area::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    width: 400px;
+    height: 480px;
+    background: radial-gradient(circle at center, #3a9ad9, #1a4a7a);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    filter: drop-shadow(0 0 16px #4a6fb1);
+    z-index: 1;
+}
+
+.image-area::after {
+    content: '';
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 340px;
+    height: 400px;
+    background: linear-gradient(135deg, #6a3a9a, #3a1a7a);
+    border-radius: 40% 60% 50% 50% / 50% 40% 60% 50%;
+    filter: drop-shadow(0 0 16px #7b4db1);
+    z-index: 2;
+}
+
+/* Additional leaf shapes with pseudo elements */
+.image-area span {
+    position: absolute;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, .2));
+}
+
+.image-area span.leaf1 {
+    width: 160px;
+    height: 220px;
+    background: linear-gradient(45deg, #00b894, #00695c);
+    top: 80px;
+    right: 120px;
+    transform: rotate(20deg);
+    z-index: 3;
+}
+
+.image-area span.leaf2 {
+    width: 130px;
+    height: 180px;
+    background: linear-gradient(45deg, #6c5ce7, #341f97);
+    top: 200px;
+    right: 180px;
+    transform: rotate(-15deg);
+    z-index: 4;
+}
+
+.image-area span.leaf3 {
+    width: 180px;
+    height: 240px;
+    background: linear-gradient(45deg, #fd79a8, #d63031);
+    top: 140px;
+    right: 40px;
+    transform: rotate(10deg);
+    z-index: 5;
+}
