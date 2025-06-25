@@ -25,12 +25,12 @@ module.exports = {
           is: /^\d{10}$/ // Validación de 10 números
         }
       },
-      contraseña: {
+      contrasena: {
         type: Sequelize.STRING,
         allowNull: false
       },
       rol: {
-        type: Sequelize.ENUM('admin', 'despachador', 'conductor', 'usuario'),
+        type: Sequelize.ENUM('administrador', 'despachador', 'conductor', 'usuario'),
         defaultValue: 'usuario'
       },
       createdAt: {

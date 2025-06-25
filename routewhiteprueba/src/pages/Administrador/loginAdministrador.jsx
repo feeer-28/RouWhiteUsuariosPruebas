@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../../assets/login.css'; // ✅ Ajusta la ruta si lo mueves de carpeta
+import '../../assets/login.css';
+const token = localStorage.getItem('tokenAdmin'); 
 
 const LoginAdministrador = () => {
   const navigate = useNavigate();
   const [datos, setDatos] = useState({
-    email: '',
-    contrasena: ''
+    correo: '',           // ✅ Cambiado de email → correo
+    contrasena: ''        // ✅ Cambiado de contrasena → contrasena
   });
+
   const [mensaje, setMensaje] = useState('');
 
   const handleChange = (e) => {
@@ -17,20 +19,27 @@ const LoginAdministrador = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMensaje('');
+
     try {
-      const res = await fetch('http://localhost:3000/api/administradores/login', {
+      const res = await fetch('http://localhost:3000/api/register/login/admin', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Authorization': `Bearer ${token}`, //Añadido token de autorización
+           'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
       });
+
       const data = await res.json();
-      if (data.token) {
-        localStorage.setItem('tokenAdmin', data.token);
-        navigate('/admin/dashboard'); // ✅ Cambia a tu ruta real
+
+      if (res.ok) {
+          localStorage.setItem('tokenAdmin', data.token);
+        console.log("Usuario logueado:", data.usuario);
+        navigate('/administrador/dashboarAdmin'); 
       } else {
-        setMensaje(data.msg || 'Credenciales incorrectas');
+        setMensaje(data.mensaje || 'Credenciales incorrectas');
       }
-    } catch {
+    } catch (error) {
       setMensaje('Error al conectar con el servidor');
     }
   };
@@ -38,7 +47,6 @@ const LoginAdministrador = () => {
   return (
     <div className="login-wrapper">
       <div className="container">
-        {/* Formulario a la izquierda */}
         <div className="right-panel">
           <h2>Login Administrador</h2>
           {mensaje && <p style={{ color: 'red', marginBottom: '10px' }}>{mensaje}</p>}
@@ -46,9 +54,9 @@ const LoginAdministrador = () => {
             <div className="input-group">
               <input
                 type="email"
-                name="email"
+                name="correo" // ✅ nombre correcto
                 placeholder="Correo electrónico"
-                value={datos.email}
+                value={datos.correo}
                 onChange={handleChange}
                 required
               />
@@ -56,7 +64,7 @@ const LoginAdministrador = () => {
             <div className="input-group">
               <input
                 type="password"
-                name="contrasena"
+                name="contrasena" // ✅ nombre correcto
                 placeholder="Contraseña"
                 value={datos.contrasena}
                 onChange={handleChange}
@@ -67,7 +75,6 @@ const LoginAdministrador = () => {
           </form>
         </div>
 
-        {/* Panel institucional a la derecha */}
         <div className="left-panel">
           <h1>Panel Admin</h1>
           <p>Inicia sesión para gestionar rutas, usuarios y más.</p>

@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    contraseña: {
-      type: DataTypes.STRING,
+    contrasena: {
+      type: DataTypes.STRING(200),
       allowNull: false
     },
     telefono: {
@@ -44,16 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Usuario',
     tableName: 'Usuarios',
-    hooks: {
-      beforeCreate: async (usuario) => {
-        usuario.contraseña = await bcrypt.hash(usuario.contraseña, 10);
-      },
-      beforeUpdate: async (usuario) => {
-        if (usuario.changed('contraseña')) {
-          usuario.contraseña = await bcrypt.hash(usuario.contraseña, 10);
-        }
-      }
-    }
+   
   });
 
   return Usuario;
