@@ -2,54 +2,73 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "../../assets/login.css";
- // ✅ Usamos el estilo global encapsulado
 
-const Registro = ({ rol }) => {
+const RegistroAdministrador = ({ rol }) => {
   const [formulario, setFormulario] = useState({
     nombre: '',
     telefono: '',
-    email: '',
-    contrasena: '',
+    correo: '',
+    contraseña: '',
     confirmarContrasena: ''
   });
 
-  const [mensaje, setMensaje] = useState('');
+  const [errores, setErrores] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario((prev) => ({ ...prev, [name]: value }));
+    setErrores((prev) => ({ ...prev, [name]: '' })); // Limpia el error al escribir
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formulario.contrasena !== formulario.confirmarContrasena) {
-      setMensaje('Las contraseñas no coinciden');
+    // Validación simple en frontend
+    if (formulario.contraseña !== formulario.confirmarContrasena) {
+      setErrores({ confirmarContrasena: 'Las contraseñas no coinciden' });
       return;
     }
 
     try {
-      const response = await axios.post(`http://localhost:3000/api/${rol}`, formulario);
-      setMensaje(response.data.mensaje || 'Registro exitoso');
+      const response = await axios.post(`http://localhost:3000/api/register/${rol}`, formulario);
+
+      alert(response.data.mensaje || 'Registro exitoso');
+
+      // Limpia formulario y errores si todo va bien
       setFormulario({
         nombre: '',
         telefono: '',
-        email: '',
-        contrasena: '',
+        correo: '',
+        contraseña: '',
         confirmarContrasena: ''
       });
+      setErrores({});
     } catch (error) {
-      setMensaje(error.response?.data?.mensaje || 'Error al registrar');
+      const mensaje = error.response?.data?.mensaje;
+      const nuevosErrores = {};
+
+      if (mensaje?.includes('Correo')) {
+        nuevosErrores.correo = mensaje;
+      } else if (mensaje?.includes('Contraseña')) {
+        nuevosErrores.contraseña = mensaje;
+      } else if (mensaje?.includes('telefono') || mensaje?.includes('Teléfono')) {
+        nuevosErrores.telefono = mensaje;
+      } else {
+        nuevosErrores.general = mensaje || error.message || 'Error al registrar';
+      }
+
+      setErrores(nuevosErrores);
     }
   };
 
   return (
     <div className="login-wrapper">
       <div className="container">
-        {/* ✅ Formulario primero */}
         <div className="right-panel">
           <h2>Registro de Administrador</h2>
-          {mensaje && <p style={{ color: 'red', marginBottom: '10px' }}>{mensaje}</p>}
+
+          {errores.general && <p style={{ color: 'red', marginBottom: '10px' }}>{errores.general}</p>}
+
           <form onSubmit={handleSubmit}>
             <div className="input-group">
               <input
@@ -71,28 +90,31 @@ const Registro = ({ rol }) => {
                 value={formulario.telefono}
                 onChange={handleChange}
               />
+              {errores.telefono && <small className="error">{errores.telefono}</small>}
             </div>
 
             <div className="input-group">
               <input
                 type="email"
-                name="email"
+                name="correo"
                 placeholder="Correo electrónico"
                 required
-                value={formulario.email}
+                value={formulario.correo}
                 onChange={handleChange}
               />
+              {errores.correo && <small className="error">{errores.correo}</small>}
             </div>
 
             <div className="input-group">
               <input
                 type="password"
-                name="contrasena"
+                name="contraseña"
                 placeholder="Contraseña"
                 required
-                value={formulario.contrasena}
+                value={formulario.contraseña}
                 onChange={handleChange}
               />
+              {errores.contraseña && <small className="error">{errores.contraseña}</small>}
             </div>
 
             <div className="input-group">
@@ -104,18 +126,19 @@ const Registro = ({ rol }) => {
                 value={formulario.confirmarContrasena}
                 onChange={handleChange}
               />
+              {errores.confirmarContrasena && <small className="error">{errores.confirmarContrasena}</small>}
             </div>
 
             <button type="submit">Registrarse</button>
           </form>
         </div>
 
-        {/* ✅ Panel institucional a la derecha */}
         <div className="left-panel">
           <h1>Administrador</h1>
           <p>Registra un nuevo administrador para gestionar el sistema de rutas.</p>
           <div className="button-container">
             <Link to="/login-administrador" className="small-button">Login Admin</Link>
+
           </div>
         </div>
       </div>
@@ -123,4 +146,4 @@ const Registro = ({ rol }) => {
   );
 };
 
-export default Registro;
+export default RegistroAdministrador;

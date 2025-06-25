@@ -126,3 +126,15 @@ form {
     max-width: 100%;
   }
 }
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
+.success {
+  color: green;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
