@@ -6,6 +6,6 @@ const authMiddleware = require('../middlewares/authMiddleware');
 router.get('/listar',RutaController.listarRutas);
 router.get('/:id', RutaController.buscarRutaPorId);
 router.post('/favoritos', RutaController.agregarRutaAFavoritos);
-router.delete('/favoritos', authMiddleware, RutaController.eliminarRutaFavoritos);
+router.delete('/favoritos',  RutaController.eliminarRutaFavoritos);
 
 module.exports = router;
