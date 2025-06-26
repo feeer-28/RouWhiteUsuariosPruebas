@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../../assets/login.css';
-const token = localStorage.getItem('tokenAdmin'); 
+
 
 const LoginAdministrador = () => {
   const navigate = useNavigate();
   const [datos, setDatos] = useState({
-    correo: '',           // ✅ Cambiado de email → correo
-    contrasena: ''        // ✅ Cambiado de contrasena → contrasena
+    correo: '',         
+    contrasena: ''        
   });
 
   const [mensaje, setMensaje] = useState('');
@@ -25,7 +25,6 @@ const LoginAdministrador = () => {
       const res = await fetch('http://localhost:3000/api/register/login/admin', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`, //Añadido token de autorización
            'Content-Type': 'application/json' },
         body: JSON.stringify(datos)
       });

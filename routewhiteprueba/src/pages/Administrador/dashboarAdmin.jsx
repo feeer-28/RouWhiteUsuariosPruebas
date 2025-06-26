@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../assets/dashboardAdmin.css';
+import ListarParaderos from './listarParaderos';
 
 const DashboardAdmin = () => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const DashboardAdmin = () => {
       try {
         const res = await fetch('http://localhost:3000/api/register/admin/dashboard', {
           headers: {
-            Authorization: token
+            Authorization: `Bearer ${token}`
           }
         });
 
@@ -44,57 +46,53 @@ const DashboardAdmin = () => {
     navigate('/login-administrador');
   };
 
+  const handleCrearParadero = () => {
+    navigate('/administrador/crearParadero');
+  };
+  const handlelistarParadero = () => {
+    navigate('/administrador/listarParaderos');
+  }
+  const handleListarRutas = () => {
+    navigate('/listar-rutas');
+  };
+
   return (
-    <div style={styles.container}>
-      <h1>Bienvenido, {admin?.nombre || 'Administrador'}</h1>
-      <p>{mensaje}</p>
+    <div>
+      <header>
+        <div className="logo">RouWhite</div>
+        <nav>
+          <ul>
+            <li><a href="/administrador/dashboarAdmin">Inicio</a></li>
+            <li><a href="#">Listado Rutas</a></li>
+            <li><a href="#">Crear Ruta</a></li>
+            <li><a href="/administrador/listarParaderos" onClick={handlelistarParadero}>Listado Paraderos</a></li>
+            <li><a href="/administrador/crearParadero" onClick={handleCrearParadero}>Crear Paraderos</a></li>
+            <li><a href="#">Perfil</a></li>
+          </ul>
+        </nav>
+        <button className="login-btn" onClick={cerrarSesion}>Cerrar sesión</button>
+      </header>
 
-      <div style={styles.cardContainer}>
-        <div style={styles.card}>
-          <h3>Rutas</h3>
-          <p>Gestiona las rutas disponibles en el sistema.</p>
-        </div>
-        <div style={styles.card}>
-          <h3>Usuarios</h3>
-          <p>Administra usuarios, conductores y despachadores.</p>
-        </div>
-      </div>
+      <main>
+        <section className="content">
+          <h1>Rutas<br />Transporte Popayán</h1>
+          <p>
+            Descubre y consulta fácilmente las rutas de transporte público de Popayán. Encuentra información
+            actualizada sobre recorridos, horarios y paraderos para moverte por la ciudad de manera eficiente y
+            cómoda.
+          </p>
+          <button className="demo-btn">NAVEGA</button>
+          <div className="pagination">
+            <span className="dot active"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </div>
+        </section>
 
-      <button onClick={cerrarSesion} style={styles.logoutBtn}>Cerrar sesión</button>
+        <section className="image-area"></section>
+      </main>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    padding: '40px',
-    textAlign: 'center',
-    fontFamily: 'sans-serif'
-  },
-  cardContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '30px',
-    marginTop: '30px',
-    flexWrap: 'wrap'
-  },
-  card: {
-    width: '250px',
-    padding: '20px',
-    borderRadius: '10px',
-    backgroundColor: '#f5f5f5',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    textAlign: 'left'
-  },
-  logoutBtn: {
-    marginTop: '40px',
-    padding: '10px 20px',
-    backgroundColor: '#cc0000',
-    color: 'white',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer'
-  }
 };
 
 export default DashboardAdmin;

@@ -6,6 +6,8 @@ import RegistroAdministrador from "./pages/Administrador/registroAdministrador";
 import Login from "./pages/login";
 import LoginAdministrador from "./pages/Administrador/loginAdministrador";
 import DashboardAdmin from './pages/Administrador/dashboarAdmin';
+import CrearParadero from "./pages/Administrador/crearParadero";
+import ListarParaderos from "./pages/Administrador/listarParaderos";
 
 function App() {
   return (
@@ -19,9 +21,10 @@ function App() {
         <Route path="/login-administrador" element={<LoginAdministrador />} />
        
         <Route path="/administrador/dashboarAdmin" element={<DashboardAdmin />} />
-
+        <Route path="/administrador/crearParadero" element={<CrearParadero />} />
+        <Route path="/administrador/listarParaderos" element={<ListarParaderos />} />
         
-
+        {/* Puedes agregar más rutas aquí según sea necesario */}
       </Routes>
     </BrowserRouter>
   );

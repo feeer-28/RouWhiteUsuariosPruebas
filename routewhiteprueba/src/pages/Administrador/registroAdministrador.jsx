@@ -8,7 +8,7 @@ const RegistroAdministrador = ({ rol }) => {
     nombre: '',
     telefono: '',
     correo: '',
-    contraseña: '',
+    contrasena: '',
     confirmarContrasena: ''
   });
 
@@ -24,7 +24,7 @@ const RegistroAdministrador = ({ rol }) => {
     e.preventDefault();
 
     // Validación simple en frontend
-    if (formulario.contraseña !== formulario.confirmarContrasena) {
+    if (formulario.contrasena !== formulario.confirmarContrasena) {
       setErrores({ confirmarContrasena: 'Las contraseñas no coinciden' });
       return;
     }
@@ -39,7 +39,7 @@ const RegistroAdministrador = ({ rol }) => {
         nombre: '',
         telefono: '',
         correo: '',
-        contraseña: '',
+        contrasena: '',
         confirmarContrasena: ''
       });
       setErrores({});
@@ -50,7 +50,7 @@ const RegistroAdministrador = ({ rol }) => {
       if (mensaje?.includes('Correo')) {
         nuevosErrores.correo = mensaje;
       } else if (mensaje?.includes('Contraseña')) {
-        nuevosErrores.contraseña = mensaje;
+        nuevosErrores.contrasena = mensaje;
       } else if (mensaje?.includes('telefono') || mensaje?.includes('Teléfono')) {
         nuevosErrores.telefono = mensaje;
       } else {
@@ -108,13 +108,13 @@ const RegistroAdministrador = ({ rol }) => {
             <div className="input-group">
               <input
                 type="password"
-                name="contraseña"
+                name="contrasena"
                 placeholder="Contraseña"
                 required
-                value={formulario.contraseña}
+                value={formulario.contrasena}
                 onChange={handleChange}
               />
-              {errores.contraseña && <small className="error">{errores.contraseña}</small>}
+              {errores.contrasena && <small className="error">{errores.contrasena}</small>}
             </div>
 
             <div className="input-group">
